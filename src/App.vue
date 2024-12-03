@@ -5,11 +5,11 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
     <header>
         <div class="wrapper">
-            <hello-world msg="欢迎访问学生信息管理系统!" />
+            <hello-world msg="欢迎访问学生成绩管理系统!" />
 
             <nav>
-                <router-link to="/">首页</router-link>
-                <router-link to="/info">学生信息</router-link>
+                <router-link to="/home">首页</router-link>
+                <router-link to="/info">学生成绩</router-link>
             </nav>
         </div>
     </header>
