@@ -61,6 +61,7 @@ export default {
                 background: var(--color-background);
                 border-radius: 8px;
             }
+            /* 盒子上边短线 */
             &::before {
                 content: '';
                 position: absolute;
@@ -69,6 +70,7 @@ export default {
                 height: calc(50% - 25px);
                 border-left: 1px solid var(--color-border);
             }
+            /* 盒子下边短线 */
             &::after {
                 content: '';
                 position: absolute;
@@ -77,7 +79,7 @@ export default {
                 height: calc(50% - 25px);
                 border-left: 1px solid var(--color-border);
             }
-            /* 去除第一个和最后一个的border-left */
+            /* 去掉第一个上边短线和最后一个下边短线 */
             &:first-of-type::before,
             &:last-of-type::after {
                 border: none;
