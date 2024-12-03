@@ -1,12 +1,10 @@
-const express = require('express')
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const app = express()
-const router = require('./router')
+const mysql = require('mysql')
 
-app.use(cors()) // 配置跨域，必须在路由之前
-app.use(router)
-
-app.listen(3666, () => {
-    console.log('服务在端口3666启动成功...')
+const db = mysql.createPool({
+    host: '127.0.0.1', //数据库IP地址
+    user: 'root',
+    password: '123456',
+    port: '3306', //数据库访问端口
+    database: 'vue-node-mysql--student-score-admin' //要操作的数据库
 })
+module.exports = db
