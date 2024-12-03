@@ -5,6 +5,10 @@ const router = createRouter({
     routes: [
         {
             path: '/',
+            redirect: '/home'
+        },
+        {
+            path: '/home',
             name: 'home',
             component: () => import('@/views/home/index.vue')
         },
@@ -12,6 +16,11 @@ const router = createRouter({
             path: '/info',
             name: 'info',
             component: () => import('@/views/student-info/index.vue')
+        },
+        {
+            path: '/update',
+            name: 'update',
+            component: () => import('@/views/update/index.vue')
         }
     ]
 })
