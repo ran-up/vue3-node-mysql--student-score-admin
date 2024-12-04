@@ -28,9 +28,9 @@
                     <td>{{ s.math }}</td>
                     <td>{{ s.english }}</td>
                     <td>
-                        <router-link :to="'/update/' + s.id">Edit</router-link>
+                        <router-link :to="`/update?id=${s.id}`">Edit</router-link>
                         &nbsp;&nbsp;
-                        <a href @click="delStuClickHandler(s.id)">Del</a>
+                        <a href @click.prevent="delStuClickHandler(s.id)">Del</a>
                     </td>
                 </tr>
             </template>
@@ -56,7 +56,6 @@ const getInfoData = () => {
     axios
         .get('http://127.0.0.1:3666/all')
         .then(res => {
-            console.log('res', res)
             if (res.data.code === 200) {
                 infoData.value = res.data.data
             } else {
@@ -70,7 +69,19 @@ const getInfoData = () => {
 
 // 删除学生
 const delStuClickHandler = id => {
-    console.log('id：', id)
+    axios
+        .delete(`http://127.0.0.1:3666/del?id=${id}`)
+        .then(res => {
+            if (res.data.code === 200) {
+                alert('删除成功')
+                getInfoData()
+            } else {
+                alert('删除失败')
+            }
+        })
+        .catch(err => {
+            alert('删除失败')
+        })
 }
 </script>
 <script>
