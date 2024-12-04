@@ -115,6 +115,9 @@ const state = reactive({
 })
 
 const saveClickHandler = () => {
+    const keys = Object.keys(state.form)
+    const values = Object.values(state.form).filter(item => item.length > 0)
+    if (values.length !== keys.length) return alert('内容未全部输入')
     axios
         .post('http://127.0.0.1:3666/add', state.form)
         .then(res => {
@@ -164,7 +167,6 @@ export default {
             input {
                 padding: 8px 10px;
                 outline: none;
-                color: #fdfdfd;
                 border: none;
                 background-color: #dbf2fe;
             }
