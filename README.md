@@ -2,6 +2,10 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+## 展示
+
+<img src="./src/assets/展示.gif">
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
@@ -35,3 +39,16 @@ npm run build
 ### 技术
 
 Vue3、VueRouter、Axios、node、mysql、Express
+
+### 功能
+
+#### 前端
+    - 展示学生信息
+    - 添加学生信息
+    - 修改学生信息
+    - 删除学生信息
+#### 后端
+    - 查询所有学生信息
+    - 通过id查询单个学生
+    - 修改单个学生
+    - 删除单个学生
