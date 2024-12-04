@@ -1,92 +1,94 @@
 <template>
-    <div class="heading">
-        <div class="heading-title">
-            <h3>{{ state.title.zn }}学生成绩</h3>
-            <h4>Student Scores {{ state.title.en }}</h4>
+    <div>
+        <div class="heading">
+            <div class="heading-title">
+                <h3>{{ state.title.zn }}学生成绩</h3>
+                <h4>Student Scores {{ state.title.en }}</h4>
+            </div>
+            <router-link to="/info">返回</router-link>
         </div>
-        <router-link to="/info">返回</router-link>
+        <form class="form">
+            <div class="form-item">
+                <p>Name</p>
+                <div class="form-item-input">
+                    <input
+                        type="text"
+                        v-model="state.form.name"
+                        @blur="
+                            $event.target.value.length > 0
+                                ? (state.rules.name = false)
+                                : (state.rules.name = true)
+                        "
+                        placeholder="请输入姓名" />
+                    <p class="ipt-msg" :class="{ error: state.rules.name }">未输入姓名</p>
+                </div>
+            </div>
+            <div class="form-item">
+                <p>Gender</p>
+                <div class="form-item-input">
+                    <input
+                        type="text"
+                        v-model="state.form.gender"
+                        @blur="
+                            ;['男', '女'].includes($event.target.value)
+                                ? (state.rules.gender = false)
+                                : (state.rules.gender = true)
+                        "
+                        placeholder="请输入性别" />
+                    <p class="ipt-msg" :class="{ error: state.rules.gender }">性别请输入男或女</p>
+                </div>
+            </div>
+            <div class="form-item">
+                <p>Chinese</p>
+                <div class="form-item-input">
+                    <input
+                        type="text"
+                        v-model="state.form.chinese"
+                        @blur="
+                            $event.target.value.length > 0
+                                ? (state.rules.chinese = false)
+                                : (state.rules.chinese = true)
+                        "
+                        placeholder="请输入语文成绩" />
+                    <p class="ipt-msg" :class="{ error: state.rules.chinese }">输入失败</p>
+                </div>
+            </div>
+            <div class="form-item">
+                <p>Math</p>
+                <div class="form-item-input">
+                    <input
+                        type="text"
+                        v-model="state.form.math"
+                        @blur="
+                            $event.target.value.length > 0
+                                ? (state.rules.math = false)
+                                : (state.rules.name = true)
+                        "
+                        placeholder="请输入数学成绩" />
+                    <p class="ipt-msg" :class="{ error: state.rules.math }">输入失败</p>
+                </div>
+            </div>
+            <div class="form-item">
+                <p>English</p>
+                <div class="form-item-input">
+                    <input
+                        type="text"
+                        v-model="state.form.english"
+                        @blur="
+                            $event.target.value.length > 0
+                                ? (state.rules.english = false)
+                                : (state.rules.english = true)
+                        "
+                        placeholder="请输入英语成绩" />
+                    <p class="ipt-msg" :class="{ error: state.rules.english }">输入失败</p>
+                </div>
+            </div>
+            <div class="form-item btn">
+                <button type="reset">重置</button>
+                <button type="submit" @click.prevent="saveClickHandler">保存</button>
+            </div>
+        </form>
     </div>
-    <form class="form">
-        <div class="form-item">
-            <p>Name</p>
-            <div class="form-item-input">
-                <input
-                    type="text"
-                    v-model="state.form.name"
-                    @blur="
-                        $event.target.value.length > 0
-                            ? (state.rules.name = false)
-                            : (state.rules.name = true)
-                    "
-                    placeholder="请输入姓名" />
-                <p class="ipt-msg" :class="{ error: state.rules.name }">未输入姓名</p>
-            </div>
-        </div>
-        <div class="form-item">
-            <p>Gender</p>
-            <div class="form-item-input">
-                <input
-                    type="text"
-                    v-model="state.form.gender"
-                    @blur="
-                        ;['男', '女'].includes($event.target.value)
-                            ? (state.rules.gender = false)
-                            : (state.rules.gender = true)
-                    "
-                    placeholder="请输入性别" />
-                <p class="ipt-msg" :class="{ error: state.rules.gender }">性别请输入男或女</p>
-            </div>
-        </div>
-        <div class="form-item">
-            <p>Chinese</p>
-            <div class="form-item-input">
-                <input
-                    type="text"
-                    v-model="state.form.chinese"
-                    @blur="
-                        $event.target.value.length > 0
-                            ? (state.rules.chinese = false)
-                            : (state.rules.chinese = true)
-                    "
-                    placeholder="请输入语文成绩" />
-                <p class="ipt-msg" :class="{ error: state.rules.chinese }">输入失败</p>
-            </div>
-        </div>
-        <div class="form-item">
-            <p>Math</p>
-            <div class="form-item-input">
-                <input
-                    type="text"
-                    v-model="state.form.math"
-                    @blur="
-                        $event.target.value.length > 0
-                            ? (state.rules.math = false)
-                            : (state.rules.name = true)
-                    "
-                    placeholder="请输入数学成绩" />
-                <p class="ipt-msg" :class="{ error: state.rules.math }">输入失败</p>
-            </div>
-        </div>
-        <div class="form-item">
-            <p>English</p>
-            <div class="form-item-input">
-                <input
-                    type="text"
-                    v-model="state.form.english"
-                    @blur="
-                        $event.target.value.length > 0
-                            ? (state.rules.english = false)
-                            : (state.rules.english = true)
-                    "
-                    placeholder="请输入英语成绩" />
-                <p class="ipt-msg" :class="{ error: state.rules.english }">输入失败</p>
-            </div>
-        </div>
-        <div class="form-item btn">
-            <button type="reset">重置</button>
-            <button type="submit" @click.prevent="saveClickHandler">保存</button>
-        </div>
-    </form>
 </template>
 
 <script setup>
