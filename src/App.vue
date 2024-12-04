@@ -10,6 +10,7 @@ import HelloWorld from './components/HelloWorld.vue'
             <nav>
                 <router-link to="/home">首页</router-link>
                 <router-link to="/info">学生成绩</router-link>
+                <router-link to="/update">添加学生成绩</router-link>
             </nav>
         </div>
     </header>
